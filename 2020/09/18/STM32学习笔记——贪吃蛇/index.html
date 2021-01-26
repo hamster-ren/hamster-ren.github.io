@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+
+
+<html lang="zh_CN">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    STM32学习笔记——贪吃蛇 |  
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="null" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-STM32学习笔记——贪吃蛇"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  STM32学习笔记——贪吃蛇
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/09/18/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%B4%AA%E5%90%83%E8%9B%87/" class="article-date">
+  <time datetime="2020-09-18T10:31:19.000Z" itemprop="datePublished">2020-09-18</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">6 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="初学STM32。"><a href="#初学STM32。" class="headerlink" title="初学STM32。"></a>初学STM32。</h2><hr>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><blockquote>
+<p>个人学单片机也有一段时间了，跟着教程学习，似乎掌握的不太熟练。偶然见到精品店里出售的迷你游戏机，决定尝试做一个贪吃蛇的小外设。制作过程收获颇多，在此做一个记录与分享。</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<h4 id="使用硬件"><a href="#使用硬件" class="headerlink" title="使用硬件"></a>使用硬件</h4><p>普通摇杆、0.96寸OLED屏幕（SPI协议通讯）、STM32F103RCT6开发板。<br><img src="https://s1.ax1x.com/2020/09/19/wI6IBj.jpg" alt="硬件"></p>
+<hr>
+<h4 id="接线"><a href="#接线" class="headerlink" title="接线"></a>接线</h4><table>
+<thead>
+<tr>
+<th>OLED</th>
+<th></th>
+<th></th>
+<th>摇杆</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GND</td>
+<td>GND</td>
+<td></td>
+<td>GND</td>
+<td>GND</td>
+</tr>
+<tr>
+<td>VCC</td>
+<td>3.3V</td>
+<td></td>
+<td>VCC</td>
+<td>3.3V</td>
+</tr>
+<tr>
+<td>D0</td>
+<td>PC0</td>
+<td></td>
+<td>VRX</td>
+<td>PA0</td>
+</tr>
+<tr>
+<td>D1</td>
+<td>PC1</td>
+<td></td>
+<td>VRY</td>
+<td>PA1</td>
+</tr>
+<tr>
+<td>RES</td>
+<td>PB15</td>
+<td></td>
+<td>SW</td>
+<td>PA2</td>
+</tr>
+<tr>
+<td>DC</td>
+<td>PA3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>CS</td>
+<td>PA6</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="https://s1.ax1x.com/2020/09/19/wIf3nO.jpg" alt="接线"></p>
+<hr>
+<h4 id="游戏设计："><a href="#游戏设计：" class="headerlink" title="游戏设计："></a>游戏设计：</h4><p>主要分为前进、控制方向、生成苹果、吃苹果、蛇伸长、撞墙和撞蛇、计分、调速这几个功能。<br>摇杆上的杆用作控制方向，按键则用作调速。<br><img src="https://s1.ax1x.com/2020/09/19/wIW0w4.jpg" alt="游戏中"></p>
+<hr>
+<h4 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h4><h5 id="一、初始化画面。"><a href="#一、初始化画面。" class="headerlink" title="一、初始化画面。"></a>一、初始化画面。</h5><p>将OLED显示屏分为信息栏部分和游戏显示部分。信息显示部分主要是显示分数和速度。游戏显示部分画出游戏区域框和蛇一开始的位置。<br>在我的设计里是用二维数组储存蛇的位置信息，我将蛇最大长度设为500（蛇长可以根据实际做修改），建立数组 snake[500][2]（snake[i][0]表示蛇x轴位置，snake[i][1]表示蛇y轴的位置）。snake[0]作为蛇尾，往后储存数据直到蛇头。建立蛇的备份数组用来储存初始化蛇的数据，便于用来初始化（<del>后来想想其实可以不用的</del>）。除了用数组储存蛇的数据以外，我在网上还见到用链表储存蛇的数据。（<del>初学C++，课堂上老师没教，不太会用，有空研究研究。</del>）</p>
+<h5 id="二、蛇向前运动部分。"><a href="#二、蛇向前运动部分。" class="headerlink" title="二、蛇向前运动部分。"></a>二、蛇向前运动部分。</h5><p><strong>第一步</strong> 灭掉蛇尾（S[1]）的点<br><strong>第二步</strong> 更新蛇位置的数据，使得蛇前进<br><strong>第三步</strong> 点亮蛇头的点<br>只要不断更新，蛇就看起来在前进了。<br>下面是原理图<br><img src="https://s1.ax1x.com/2020/09/19/w5rcIf.jpg" alt="蛇前进原理图"></p>
+<h6 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">void Snake_move( void )</span><br><span class="line">&#123;</span><br><span class="line">	int i; </span><br><span class="line"></span><br><span class="line">	//灭掉蛇尾的点</span><br><span class="line">	Snake_drawpoint( snake[0][0], snake[0][1], 0 );</span><br><span class="line"></span><br><span class="line">	//前进</span><br><span class="line">	<span class="keyword">for</span> ( i = 0; i &lt; snake_long - 1 ; i++ )</span><br><span class="line">	&#123;</span><br><span class="line">		snake[i][0] = snake[i+1][0];</span><br><span class="line">		snake[i][1] = snake[i+1][1];</span><br><span class="line">	&#125;</span><br><span class="line">	snake[snake_long - 1][0] = snake[snake_long-1][0]+aim_x;</span><br><span class="line">	snake[snake_long - 1][1] = snake[snake_long-1][1]+aim_y;</span><br><span class="line"></span><br><span class="line">	//点亮蛇头的点</span><br><span class="line">	Snake_drawpoint ( snake[snake_long-1][0],snake[snake_long-1][1],1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="三、控制方向"><a href="#三、控制方向" class="headerlink" title="三、控制方向"></a>三、控制方向</h5><p>使用STM32的ADC功能获取摇杆x轴和y轴的数据，取合适的数据范围并作比较，更新前进方向。注意判断判断得到的前进方向与原方向相反时，不作方向的更新。</p>
+<h6 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">void Snake_control(void)</span><br><span class="line">&#123;</span><br><span class="line">	u16 x, y;</span><br><span class="line">	u16 x_jud, y_jud;</span><br><span class="line">	u16 tempx;</span><br><span class="line">	u16 tempy;</span><br><span class="line">	</span><br><span class="line">	//读取数据</span><br><span class="line">	tempx = Get_Adc_Average( ADC_Channel_0, 10);</span><br><span class="line">	tempy = Get_Adc_Average( ADC_Channel_1, 10);</span><br><span class="line">	x = tempx &gt;= 2048? (tempx - 2048) : (2048 - tempx);</span><br><span class="line">	y = tempy &gt;= 2048? (tempy - 2048) : (2048 - tempy);</span><br><span class="line">	x_jud = tempx &gt;= 2048? 1 : 0;</span><br><span class="line">	y_jud = tempy &gt;= 2048? 1 : 0;</span><br><span class="line">	</span><br><span class="line">	//确定方向</span><br><span class="line">	<span class="keyword">if</span>( x &gt; 1024 || y &gt; 1024 ) </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>( x &gt; y &amp;&amp; x_jud == 0 &amp;&amp; aim_x != 1) 	//向左</span><br><span class="line">		&#123;</span><br><span class="line">			aim_x = -1;</span><br><span class="line">			aim_y = 0;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>( x &gt; y &amp;&amp; x_jud == 1 &amp;&amp; aim_x != -1)	//向右</span><br><span class="line">		&#123;</span><br><span class="line">			aim_x = 1;</span><br><span class="line">			aim_y = 0;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>( y &gt; x &amp;&amp; y_jud == 0 &amp;&amp; aim_y != 1)	//向下</span><br><span class="line">		&#123;</span><br><span class="line">			aim_x = 0;</span><br><span class="line">			aim_y = -1;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>( y &gt; x &amp;&amp; y_jud == 1 &amp;&amp; aim_y != -1)	//向上</span><br><span class="line">		&#123;</span><br><span class="line">			aim_x = 0;</span><br><span class="line">			aim_y = 1;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="四、生成苹果"><a href="#四、生成苹果" class="headerlink" title="四、生成苹果"></a>四、生成苹果</h5><p>利用单片机里的定时器中断服务程序生成随机数种子，然后使用 rand() 生成随机数作为苹果位置的数据。</p>
+<h6 id="定时器中断服务函数"><a href="#定时器中断服务函数" class="headerlink" title="定时器中断服务函数"></a>定时器中断服务函数</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">u32 seed = 0;</span><br><span class="line">void TIM3_IRQHandler( void )   //TIM3中断</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)</span><br><span class="line">		&#123;</span><br><span class="line">			seed++;		//seed为随机数种子</span><br><span class="line">			TIM_ClearITPendingBit(TIM3, TIM_IT_Update  ); </span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="随机生成苹果"><a href="#随机生成苹果" class="headerlink" title="随机生成苹果"></a>随机生成苹果</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void Snake_apple (u32 seed)</span><br><span class="line">&#123;</span><br><span class="line">	</span><br><span class="line">	srand ( seed );</span><br><span class="line">	apple_x = rand() % 46 + 1;</span><br><span class="line">	apple_y = rand() % 30 + 1;</span><br><span class="line">	Snake_drawpoint ( apple_x, apple_y, 1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="五、吃苹果-amp-加分"><a href="#五、吃苹果-amp-加分" class="headerlink" title="五、吃苹果&amp;加分"></a>五、吃苹果&amp;加分</h5><p>判断蛇头（身体）坐标是否与苹果坐标相同。如果相同，且蛇长不超过最大值，则分数加一，蛇长加一。</p>
+<h6 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a>代码：</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">void Snake_eatapple ( u32 seed )</span><br><span class="line">&#123;</span><br><span class="line">	u16 i;</span><br><span class="line">	<span class="keyword">for</span> ( i = 0; i &lt; snake_long; i++ )</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (snake[i][0] == apple_x &amp;&amp; snake[i][1] == apple_y)</span><br><span class="line">		&#123;</span><br><span class="line">			score++;</span><br><span class="line">			<span class="keyword">if</span> (snake_long &lt; 500)</span><br><span class="line">			&#123;</span><br><span class="line">				snake_long = snake_long+1;</span><br><span class="line">				snake[snake_long-1][0] = snake[snake_long-2][0];</span><br><span class="line">				snake[snake_long-1][1] = snake[snake_long-2][1];</span><br><span class="line">			&#125;</span><br><span class="line">			OLED_ShowNum ( 96, 24, score, 4, 12);</span><br><span class="line">			Snake_apple (seed);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="六、蛇伸长"><a href="#六、蛇伸长" class="headerlink" title="六、蛇伸长"></a>六、蛇伸长</h5><p>在上面吃苹果的部分中，我将增加新蛇头的数据储存为旧蛇头的数据，（如图），此时的蛇被“折叠”起来，随着蛇不断前进，到一定步数后才会真正在屏幕上伸长。<br><img src="https://s1.ax1x.com/2020/09/19/w5r5ss.jpg" alt="蛇伸长原理"></p>
+<h5 id="七、撞墙-amp-撞蛇身"><a href="#七、撞墙-amp-撞蛇身" class="headerlink" title="七、撞墙&amp;撞蛇身"></a>七、撞墙&amp;撞蛇身</h5><p>判断蛇头的坐标是否与墙坐标和蛇身坐标相同。相同则结束游戏，显示“GAMEOVER”，几秒后将所有数据初始化，游戏自动重新开始。<br><img src="https://s1.ax1x.com/2020/09/19/wIfFXT.jpg" alt="游戏结束"></p>
+<h5 id="八、调速"><a href="#八、调速" class="headerlink" title="八、调速"></a>八、调速</h5><p>使用外部中断服务，读取按键情况。每按一下变化蛇的速度，显示在屏幕上。我将速度设为四挡从1-4为从慢到快。</p>
+<h6 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a>代码：</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">u32 speed = 320;</span><br><span class="line">void EXTI2_IRQHandler ( void )</span><br><span class="line">&#123;</span><br><span class="line">	delay_ms( 10 );</span><br><span class="line">	<span class="keyword">if</span> ( KEY1 == 0 )</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> ( speed &gt; 20 )</span><br><span class="line">			speed -= 100;</span><br><span class="line">		<span class="keyword">else</span> speed = 320;</span><br><span class="line">		OLED_ShowNum ( 96, 48, 4 - speed / 100, 4, 12);</span><br><span class="line">	&#125;		 </span><br><span class="line">	EXTI_ClearITPendingBit ( EXTI_Line2 ); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="一些问题与想法"><a href="#一些问题与想法" class="headerlink" title="一些问题与想法"></a>一些问题与想法</h4><ul>
+<li>没有设置控制游戏开始结束的按键。</li>
+<li>使用摇杆时，由于摇杆过于灵活，有时候控制不好会出现蛇走的方向不受控制。</li>
+<li>生成苹果时没有考虑消除苹果生成在蛇内部。为了减少麻烦，我是直接将判断苹果是不是在蛇内部，直接计分。</li>
+<li>此时出现了一个问题，我一开始时是将吃苹果后苹果的坐标作为新蛇头，但如果苹果出现在蛇内部，就会出现蛇（<del>莫名其妙</del>）撞到自己（蛇头坐标等于蛇身坐标）。所以讲新蛇头设置为与旧蛇头一样的坐标。（与正常情况苹果生成在蛇外部是一样的）</li>
+<li>优化：设置按键控制游戏开始结束、用按键控制蛇方向。</li>
+<li>尝试：使用链表储存蛇数据、设置迷宫型地图。</li>
+</ul>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/09/18/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%B4%AA%E5%90%83%E8%9B%87/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/STM32/" rel="tag">STM32</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/12/02/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94PWM%E8%88%B5%E6%9C%BA%E6%8E%A7%E5%88%B6/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            STM32学习——PWM舵机控制
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/09/17/%E5%88%9D%E6%AC%A1%E8%A7%81%E9%9D%A2/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">初次见面</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "",
+    app_key: "",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2021
+        <i class="ri-heart-fill heart_icon"></i> Ren
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="https://s3.ax1x.com/2021/01/26/svYprV.png" alt=""></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%91%84%E5%BD%B1/">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://s1.ax1x.com/2020/09/18/w4MxX9.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://s1.ax1x.com/2020/09/18/w4MqYT.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>
