@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-01-27T03:42:45.533Z</updated>
+  <updated>2021-01-27T08:28:45.722Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>贴片电阻规格资料</title>
+    <link href="http://example.com/2021/01/27/%E8%B4%B4%E7%89%87%E7%94%B5%E9%98%BB%E8%A7%84%E6%A0%BC%E8%B5%84%E6%96%99/"/>
+    <id>http://example.com/2021/01/27/%E8%B4%B4%E7%89%87%E7%94%B5%E9%98%BB%E8%A7%84%E6%A0%BC%E8%B5%84%E6%96%99/</id>
+    <published>2021-01-27T06:57:01.000Z</published>
+    <updated>2021-01-27T08:28:45.722Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;简述&quot;&gt;&lt;a href=&quot;#简述&quot; class=&quot;headerlink&quot; title=&quot;简述&quot;&gt;&lt;/a&gt;简述&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;我们常说的贴片电阻 (SMD Resistor)叫”片式固定电阻器”(Chip Fixed Resistor)，又叫”矩形片状电阻”(Rectangular Chip Resistors)，是由ROHM公司发明并最早推出市场的。特点是&lt;strong&gt;耐潮湿，耐高温，可靠度高，外观尺寸均匀，精确且温度系数与阻值公差小&lt;/strong&gt;。 &lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="资料" scheme="http://example.com/categories/%E8%B5%84%E6%96%99/"/>
+    
+    
+    <category term="笔记" scheme="http://example.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>博客搭建笔记</title>

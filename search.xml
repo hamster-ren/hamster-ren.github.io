@@ -1,6 +1,400 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>初次见面</title>
+    <url>/2020/09/17/%E5%88%9D%E6%AC%A1%E8%A7%81%E9%9D%A2/</url>
+    <content><![CDATA[<p>你好！这里是阿欢同学的博客。<br>这里将分享我的学习笔记和一些生活趣事。<br>请多多指教！</p>
+]]></content>
+      <categories>
+        <category>杂言</category>
+      </categories>
+      <tags>
+        <tag>琐碎的事</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>贴片电阻规格资料</title>
+    <url>/2021/01/27/%E8%B4%B4%E7%89%87%E7%94%B5%E9%98%BB%E8%A7%84%E6%A0%BC%E8%B5%84%E6%96%99/</url>
+    <content><![CDATA[<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><blockquote>
+<p>我们常说的贴片电阻 (SMD Resistor)叫”片式固定电阻器”(Chip Fixed Resistor)，又叫”矩形片状电阻”(Rectangular Chip Resistors)，是由ROHM公司发明并最早推出市场的。特点是<strong>耐潮湿，耐高温，可靠度高，外观尺寸均匀，精确且温度系数与阻值公差小</strong>。 </p>
+</blockquote>
+<a id="more"></a>
+
+
+<h5 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h5><p>按<strong>生产工艺</strong>分<strong>厚膜(Thick Film Chip Resistors)</strong> 、 <strong>薄膜(Thin Film Chip Resistors)</strong> 两种。</p>
+<p><strong>厚膜</strong>是采用丝网印刷将电阻性材料淀积在绝缘基体(例如玻璃或氧化铝陶瓷)上，然后烧结形成的。我们通常所见的多为厚膜片式电阻，精度范围±0.5% ~ 10%，温度系数:±50PPM/℃ ~ ±400PPM/℃。 </p>
+<p><strong>薄膜</strong>是在真空中采用蒸发和溅射等工艺将电阻性材料淀积在绝缘基体工艺(真空镀膜技术)制成，特点是低温度系数(±5PPM/℃)，高精度(±0.01%～±1%)。 </p>
+<h5 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h5><p><strong>0201，0402，0603，0805，1206，1210，1812，2010，2512。</strong></p>
+<p>其常规系列的精度为5%，1%。阻值范围从0.1欧姆到20M欧姆。标准阻值有E24，E96系列。</p>
+<p>功率有1/20W、1/16W、1/8W、1/10W、1/4W、1/2W、1W。 </p>
+<h5 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h5><ul>
+<li>体积小，重量轻 </li>
+<li>适合波峰焊和回流焊 </li>
+<li>机械强度高，高频特性优越 </li>
+<li>常用规格价格比传统的引线电阻还便宜 </li>
+<li>生产成本低，配合自动贴片机，适合现代电子产品规模化生产</li>
+</ul>
+<h5 id="使用状况"><a href="#使用状况" class="headerlink" title="使用状况"></a>使用状况</h5><p>由于价格便宜，生产方便，能大面积减少PCB面积，减少产品外观尺寸，现在已取代绝大部分传统引线电阻。除一些小厂或不得不使用引线电阻的设计，各种电器上几乎都在使用。</p>
+<p>目前绝大部分电子产品，以0603、0805器件为主；以手机，PDA为代表的高密度电子产品多使用0201、0402的器件；一些要求稳定和安全的电子产品，如医疗器械、汽车行驶记录仪、税控机则多采用1206、1210等尺寸偏大的电阻。 </p>
+<hr>
+<h2 id="贴片电阻基本结构"><a href="#贴片电阻基本结构" class="headerlink" title="贴片电阻基本结构"></a>贴片电阻基本结构</h2><p><img src="https://s3.ax1x.com/2021/01/27/sx6gRx.png" alt="贴片电阻基本结构"></p>
+<hr>
+<h2 id="贴片电阻分类"><a href="#贴片电阻分类" class="headerlink" title="贴片电阻分类"></a>贴片电阻分类</h2><h5 id="贴片电阻分为以下几大类："><a href="#贴片电阻分为以下几大类：" class="headerlink" title="贴片电阻分为以下几大类："></a>贴片电阻分为以下几大类：</h5><table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">参考国巨分类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">常规系列厚膜贴片电阻<br>General purpose</td>
+<td align="center">General purpose, 0201 - 0805; <br>General purpose, 1206 - 2512</td>
+</tr>
+<tr>
+<td align="center">高精度高稳定性贴片电阻<br>High precision - high stability</td>
+<td align="center">High precision - high stability, 0201 - 0603; <br>High precision - high stability, 0805 - 1210; <br>High precision - high stability, 2010 - 2512</td>
+</tr>
+<tr>
+<td align="center">常规系列薄膜贴片电阻<br>General purpose thin film</td>
+<td align="center">General purpose thin film, 0201-2512</td>
+</tr>
+<tr>
+<td align="center">低阻值贴片电阻<br>Low ohmic</td>
+<td align="center">Low ohmic, 0402 - 1206; Low ohmic, 2010 - 2512</td>
+</tr>
+<tr>
+<td align="center">贴片电阻阵列<br>Arrays</td>
+<td align="center">Arrays, convex and concave</td>
+</tr>
+<tr>
+<td align="center">贴片电流传感器<br>SMD current sensors</td>
+<td align="center">Current Sensors - Low TCR</td>
+</tr>
+<tr>
+<td align="center">贴片网络电阻器<br>Network</td>
+<td align="center">Network, T-type and L-type</td>
+</tr>
+</tbody></table>
+<h5 id="贴片电阻规格、封装、尺寸"><a href="#贴片电阻规格、封装、尺寸" class="headerlink" title="贴片电阻规格、封装、尺寸"></a>贴片电阻规格、封装、尺寸</h5><p><img src="https://s3.ax1x.com/2021/01/27/sxWejx.png" alt="尺寸"></p>
+<p>贴片电阻常见封装有9种，用两种尺寸代码来表示。一种尺寸代码是由4位数字表示的EIA(美国电子工业协会)代码，前两位与后两位分别表示电阻的长与宽，以英寸为单位。我们常说的0603封装就是指英制代码。另一种是米制代码，也由4位数字表示，其单位为毫米。下表列出贴片电阻封装英制和公制的关系及详细的尺寸： </p>
+<p><img src="https://s3.ax1x.com/2021/01/27/sxWNKP.png" alt="贴片尺寸"></p>
+<br>
+
+<table>
+<thead>
+<tr>
+<th align="center">英制<br>(inch)</th>
+<th align="center">公制<br>(mm)</th>
+<th align="center">长(L)<br>(mm)</th>
+<th align="center">宽(W)<br>(mm)</th>
+<th align="center">高(t)<br>(mm)</th>
+<th align="center">a<br>(mm)</th>
+<th align="center">b<br>(mm)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0201</td>
+<td align="center">0603</td>
+<td align="center">0.60±0.05</td>
+<td align="center">0.30±0.05</td>
+<td align="center">0.23±0.05</td>
+<td align="center">0.10±0.05</td>
+<td align="center">0.15±0.05</td>
+</tr>
+<tr>
+<td align="center">0402</td>
+<td align="center">1005</td>
+<td align="center">1.00±0.10</td>
+<td align="center">0.50±0.10</td>
+<td align="center">0.30±0.10</td>
+<td align="center">0.20±0.10</td>
+<td align="center">0.25±0.10</td>
+</tr>
+<tr>
+<td align="center">0603</td>
+<td align="center">1608</td>
+<td align="center">1.60±0.15</td>
+<td align="center">0.80±0.15</td>
+<td align="center">0.40±0.10</td>
+<td align="center">0.30±0.20</td>
+<td align="center">0.30±0.20</td>
+</tr>
+<tr>
+<td align="center">0805</td>
+<td align="center">2012</td>
+<td align="center">2.00±0.20</td>
+<td align="center">1.25±0.15</td>
+<td align="center">0.50±0.10</td>
+<td align="center">0.40±0.20</td>
+<td align="center">0.40±0.20</td>
+</tr>
+<tr>
+<td align="center">1206</td>
+<td align="center">3216</td>
+<td align="center">3.20±0.20</td>
+<td align="center">1.60±0.15</td>
+<td align="center">0.55±0.10</td>
+<td align="center">0.50±0.20</td>
+<td align="center">0.50±0.20</td>
+</tr>
+<tr>
+<td align="center">1210</td>
+<td align="center">3225</td>
+<td align="center">3.20±0.20</td>
+<td align="center">2.50±0.20</td>
+<td align="center">0.55±0.10</td>
+<td align="center">0.50±0.20</td>
+<td align="center">0.50±0.20</td>
+</tr>
+<tr>
+<td align="center">1812</td>
+<td align="center">4832</td>
+<td align="center">4.50±0.20</td>
+<td align="center">3.20±0.20</td>
+<td align="center">0.55±0.10</td>
+<td align="center">0.50±0.20</td>
+<td align="center">0.50±0.20</td>
+</tr>
+<tr>
+<td align="center">2010</td>
+<td align="center">5025</td>
+<td align="center">5.00±0.20</td>
+<td align="center">2.50±0.20</td>
+<td align="center">0.55±0.10</td>
+<td align="center">0.60±0.20</td>
+<td align="center">0.60±0.20</td>
+</tr>
+<tr>
+<td align="center">2512</td>
+<td align="center">6432</td>
+<td align="center">6.40±0.20</td>
+<td align="center">3.20±0.20</td>
+<td align="center">0.55±0.10</td>
+<td align="center">0.60±0.20</td>
+<td align="center">0.60±0.20</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Note：我们俗称的封装是指英制。</p>
+</blockquote>
+<h5 id="贴片电阻额定功率及工作电压"><a href="#贴片电阻额定功率及工作电压" class="headerlink" title="贴片电阻额定功率及工作电压"></a>贴片电阻额定功率及工作电压</h5><p>贴片电阻的功率是指通过电流时由于焦耳热电阻产生的功率。<br>可根据焦耳定律算出：</p>
+<p>P=I^2*R</p>
+<p><strong>额定功率：</strong> 是指在某个温度下最大允许使用的功率，通常指环境温度为70°C时的额定功率。 </p>
+<p><strong>额定电压：</strong>可以根据以下公式求出额定电压。 </p>
+<p>额定电压(V)＝√(额定功率(W)× 标称阻值(Ω))</p>
+<p><strong>最高工作电压：</strong>允许加载在贴片电阻两端的最高电压。 </p>
+<p><strong>贴片电阻的封装与功率、电压关系如下表：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">英制<br>(inch)</th>
+<th align="center">公制<br>(mm)</th>
+<th align="center">额定功率(W) 70°C</th>
+<th align="center">最高工作电压<br>(V)</th>
+<th align="center">工作温度(°C)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">01005</td>
+<td align="center">0402</td>
+<td align="center">1/32</td>
+<td align="center">15</td>
+<td align="center">-55 ~ +125</td>
+</tr>
+<tr>
+<td align="center">0201</td>
+<td align="center">0603</td>
+<td align="center">1/20</td>
+<td align="center">25</td>
+<td align="center">-55 ~ +125</td>
+</tr>
+<tr>
+<td align="center">0402</td>
+<td align="center">1005</td>
+<td align="center">1/16</td>
+<td align="center">50</td>
+<td align="center">-55 ~ +155</td>
+</tr>
+<tr>
+<td align="center">0603</td>
+<td align="center">1608</td>
+<td align="center">1/10</td>
+<td align="center">50</td>
+<td align="center">-55 ~ +155</td>
+</tr>
+<tr>
+<td align="center">0805</td>
+<td align="center">2012</td>
+<td align="center">1/8</td>
+<td align="center">150</td>
+<td align="center">-55 ~ +155</td>
+</tr>
+<tr>
+<td align="center">1206</td>
+<td align="center">3216</td>
+<td align="center">1/4</td>
+<td align="center">200</td>
+<td align="center">-55 ~ +155</td>
+</tr>
+<tr>
+<td align="center">1210</td>
+<td align="center">3225</td>
+<td align="center">1/4</td>
+<td align="center">200</td>
+<td align="center">-55 ~ +125</td>
+</tr>
+<tr>
+<td align="center">2010</td>
+<td align="center">5025</td>
+<td align="center">1/2</td>
+<td align="center">200</td>
+<td align="center">-55 ~ +125</td>
+</tr>
+<tr>
+<td align="center">2512</td>
+<td align="center">6432</td>
+<td align="center">1</td>
+<td align="center">200</td>
+<td align="center">-55 ~ +125</td>
+</tr>
+</tbody></table>
+<p><img src="http://file.elecfans.com/web1/M00/45/4E/o4YBAFpoNiOACoKXAAP3Ur0Vi1E412.png" alt="功率及环境温度降额曲线图"></p>
+<h5 id="贴片电阻标识"><a href="#贴片电阻标识" class="headerlink" title="贴片电阻标识"></a>贴片电阻标识</h5><p>贴片电阻上面的印字绝大部分标识其阻值大小。各个厂家的印字规则虽然不完全相同，但绝大部分遵照一定规则。 </p>
+<p>常见的印字标注方法有“常规3位数标注法”、 “常规4位数标注法”、“3位数乘数代码标注法、 “R表示小数点位置”、“m表示小数点位置 ”。 </p>
+<p>0201,0402由于面积太小，通常上面都不印字。<br>0603，0805，1206，1210，1812，2010，2512上面印有3位数或者4位数。</p>
+]]></content>
+      <categories>
+        <category>资料</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客搭建笔记</title>
+    <url>/2021/01/27/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>为了方便自己以后配置博客 : )</p>
+<a id="more"></a>
+
+<hr>
+<h4 id="教程视频来源"><a href="#教程视频来源" class="headerlink" title="教程视频来源"></a><a href="https://www.bilibili.com/video/BV1nh411o738?p=1">教程视频来源</a></h4><hr>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p><a href="https://nodejs.org/en/">Nodejs</a><br><a href="https://gitforwindows.org/">Git Bash</a><br>打开 <strong>Git Bash</strong> 输入 <strong>node -v</strong> 和 <strong>npm -v</strong> 检验是否安装成功。</p>
+<h4 id="启动CMD，输入以下指令"><a href="#启动CMD，输入以下指令" class="headerlink" title="启动CMD，输入以下指令"></a>启动CMD，输入以下指令</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> prefix “C:\博客搭建\Global”</span><br><span class="line">npm config <span class="built_in">set</span> cacha “C:\博客搭建\Global”</span><br></pre></td></tr></table></figure>
+<p><strong>记住路径，配置变量的时候会用到</strong></p>
+<h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><p>打开 <strong>Git Bash</strong> 输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
+<p>如果Hexo无法使用，需要配置环境变量</p>
+<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><p>右击“此电脑”——“属性”——“高级系统设置”——“环境变量”——pc的用户变量——选中path——“编辑”——“新建”——输入“C:\博客搭建\Global”——“确定”<br><img src="https://s3.ax1x.com/2021/01/27/sxSLGR.png" alt="配置路径图一"><br><img src="https://s3.ax1x.com/2021/01/27/sxpkRI.png" alt="配置路径图二"></p>
+<p>在<strong>Git Bash</strong> 输入 <strong>hexo -v</strong> 验证</p>
+<hr>
+<h2 id="配置博客"><a href="#配置博客" class="headerlink" title="配置博客"></a>配置博客</h2><h4 id="初始化博客"><a href="#初始化博客" class="headerlink" title="初始化博客"></a>初始化博客</h4><p>“C:\博客搭建”创建文件夹，命名为“Blog”<br>进入“Blog”——搜索栏输入cmd<br>进入cmd<br>输入 hexo init<br>输入 hexo s<br><img src="https://s3.ax1x.com/2021/01/27/sxp2wD.png" alt="初始化博客"><br>浏览器输入地址：<u><a href="http://localhost:4000/">http://localhost:4000</a></u><br>初始化博客成功</p>
+<h4 id="配置博客-1"><a href="#配置博客-1" class="headerlink" title="配置博客"></a>配置博客</h4><p>打开Blog文件夹——用 Sublime Text 打开“_config.yml”<br><img src="https://s3.ax1x.com/2021/01/27/sxCcIe.png" alt="配置博客1"></p>
+<p>修改信息 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">title:                                    <span class="comment">#博客名字</span></span><br><span class="line">subtitle: <span class="string">&#x27;good things take time :)&#x27;</span>      <span class="comment">#博客副标题</span></span><br><span class="line">description: <span class="string">&#x27;&#x27;</span>                           <span class="comment">#关于博客的描述</span></span><br><span class="line">keywords:</span><br><span class="line">author: Ren                               <span class="comment">#博客作者</span></span><br><span class="line">language: zh_CN                           <span class="comment">#博客语言</span></span><br><span class="line">timezone: <span class="string">&#x27;Asia/Shanghai&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="Hexo基本命令"><a href="#Hexo基本命令" class="headerlink" title="Hexo基本命令"></a>Hexo基本命令</h6><table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Hexo init</td>
+<td align="center">初始化博客</td>
+</tr>
+<tr>
+<td align="center">Hexo s</td>
+<td align="center">运行博客</td>
+</tr>
+<tr>
+<td align="center">Hexo n title</td>
+<td align="center">创建一篇新的文章，文章标题是title</td>
+</tr>
+<tr>
+<td align="center">Hexo c</td>
+<td align="center">清理文件</td>
+</tr>
+<tr>
+<td align="center">Hexo g</td>
+<td align="center">生成静态文件</td>
+</tr>
+<tr>
+<td align="center">Hexo d</td>
+<td align="center">部署博客（需要插件）</td>
+</tr>
+</tbody></table>
+<h4 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h4><p>CMD输入 <strong>Hexo n title</strong> 创建一篇新的文章，文章标题是title<br><img src="https://s3.ax1x.com/2021/01/27/sxP9dU.png" alt="写文章"><br>打开文件进行编辑<br>文章的编辑方式使用<a href="https://www.runoob.com/markdown/md-block.html"><strong>markdown</strong></a><br>文章保存后在 <strong>cmd</strong> 输入 <strong>hexo s</strong><br>打开连接可以看到新文章</p>
+<h4 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h4><p><a href="https://hexo.io/themes/">themes|hexo</a><br>一般会有安装教程文章，详细阅读<br>在Blog文件——“_config.yml”里，找到theme，修改为已下载的主题的名字<br><img src="https://s3.ax1x.com/2021/01/27/sxPGQI.png" alt="配置主题"></p>
+<p><strong>此处需要安装插件使博客能够运行。</strong><br>Cmd运行命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-pug hexo-renderer-stylus</span><br></pre></td></tr></table></figure>
+<p>安装插件。</p>
+<blockquote>
+<p>为方便以后升级方便，不建议对主题文件进行修改。推荐把主题的配置文件“_config.yml”复制到hexo工作目录下的source/_data/ayer.yml，如果目录不存在就创建一个。</p>
+</blockquote>
+<h4 id="更换图片"><a href="#更换图片" class="headerlink" title="更换图片"></a>更换图片</h4><p>使用网站 <strong><a href="https://imgchr.com/">路过图床</a></strong> 上传图片<br>使用图片UPL链接<br><img src="https://s3.ax1x.com/2021/01/27/sxFaGQ.png" alt="路过图床"> </p>
+<h4 id="创建分类页、标签页、友链页"><a href="#创建分类页、标签页、友链页" class="headerlink" title="创建分类页、标签页、友链页"></a>创建分类页、标签页、友链页</h4><p>e.g.<br>分类页<br>前往hexo根目录<br>输入 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+<p>修改文件为：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Title: 我的分类页</span><br><span class="line">Data: *******</span><br><span class="line">Type: <span class="string">&quot;catergories&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="友链添加"><a href="#友链添加" class="headerlink" title="友链添加"></a>友链添加</h4><p>在hexo博客目录中的source/_data，创建文件link.ylm<br>编辑</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Class_name:</span><br><span class="line">Class_desc:</span><br><span class="line">Link_list:</span><br><span class="line">	Name:				<span class="comment">#名字</span></span><br><span class="line">	Link:				<span class="comment">#网址</span></span><br><span class="line">	Avatar:				<span class="comment">#头像</span></span><br><span class="line">	Descry:				<span class="comment">#描述</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="关于文章置顶"><a href="#关于文章置顶" class="headerlink" title="关于文章置顶"></a>关于文章置顶</h4><p><strong>安装插件</strong><br>执行命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-generator-index --save</span><br><span class="line">npm install hexo-generator-index-pin-top –-save</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="部署云端"><a href="#部署云端" class="headerlink" title="部署云端"></a>部署云端</h2><p>执行命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git –save</span><br></pre></td></tr></table></figure>
+<p>使用<strong>github</strong>部署云端<br>在GitHub中建立一个仓库，仓库名字必须是 <strong>xxx.github.io</strong> , xxx是GitHub名字<br>然后打开博客配置文件_config.yml<br>找到</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Deploy:</span><br><span class="line">	Type: git</span><br><span class="line">	Repo:&lt;仓库地址&gt;</span><br><span class="line">	Branch: master </span><br></pre></td></tr></table></figure>
+<p>cmd运行命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Hexo clean </span><br><span class="line">hexo g</span><br><span class="line">Hexo d</span><br></pre></td></tr></table></figure>
+<p>如果报错<br>根据提示运行命令</p>
+<blockquote>
+<p>创建博客完成</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>eplan_harness_prod_学习笔记</title>
+    <url>/2021/01/26/eplan-harness-prod-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>本人在学校车队项目负责线束部分，由于网络上较难找到相关资料，因此将学习笔记记录于此。</p>
+</blockquote>
+<a id="more"></a>
+
+<hr>
+<h4 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h4><p>EPLAN Harness prod是一款用于线束建模的软件。软件本身不复杂，但由于并不是广泛使用的软件，网络上学习的资源不多，学习阶段需要花点心思去研究，为新车进行线束建模的时候才会更加得心应手。</p>
+<hr>
+<h4 id="学习资源："><a href="#学习资源：" class="headerlink" title="学习资源："></a>学习资源：</h4><h6 id="网上资源：跟我一起学EPLAN-Harness-prod"><a href="#网上资源：跟我一起学EPLAN-Harness-prod" class="headerlink" title="网上资源：跟我一起学EPLAN Harness prod"></a><strong>网上资源：跟我一起学EPLAN Harness prod</strong></h6><p>点击链接进入话题 <a href="https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MzA3MjAzNTQ3OA==&scene=1&album_id=1446650997702623233&count=3&uin=&key=&devicetype=Windows+10+x64&version=63010043&lang=zh_CN&ascene=1&fontgear=2">#EPLAN教程</a> 查找 “<strong>跟我一起学EPLAN Harness prod</strong>”共七篇文章。文章内容没有完全的介绍软件的各部分功能，主要用于<strong>学习软件的基本操作</strong>以及<strong>初步了解建模步骤</strong>。</p>
+<h6 id="书本：《EPLAN-Harness-prod-官方教程》"><a href="#书本：《EPLAN-Harness-prod-官方教程》" class="headerlink" title="书本：《EPLAN Harness prod 官方教程》"></a><strong>书本：《EPLAN Harness prod 官方教程》</strong></h6><p>对软件的介绍比较齐全，能够查找到软件上各个操作的使用方法。<strong>建模时候遇到问题可翻查此书寻找解决方法</strong>。<br><img src="https://img2.doubanio.com/view/subject/l/public/s33778793.jpg" alt="《EPLAN Harness prod 官方教程》"></p>
+<hr>
+<h4 id="学习过程："><a href="#学习过程：" class="headerlink" title="学习过程："></a>学习过程：</h4><h6 id="1、初步了解软"><a href="#1、初步了解软" class="headerlink" title="1、初步了解软"></a><strong>1、初步了解软</strong></h6><p>从软件自带的样本模型入手，结合教程（软件和教程的模型会不一样），初步了解建模的基本步骤以及基本操作，并尝试建模。</p>
+<h6 id="2、尝试对上赛季模型进行线束建模并构思本赛季线束模型"><a href="#2、尝试对上赛季模型进行线束建模并构思本赛季线束模型" class="headerlink" title="2、尝试对上赛季模型进行线束建模并构思本赛季线束模型"></a><strong>2、尝试对上赛季模型进行线束建模并构思本赛季线束模型</strong></h6><p><strong>阅读赛规</strong>，看懂<strong>整车线束原理图</strong>（<u>重点：安全回路，结合赛规看</u>），<strong>研究上赛季线束模型</strong>，了解并整理<strong>各用电器接口及其位置</strong>。并根据本赛季模型的变化，查找相关线束建模资料（网络，其他优秀车队等），研究并思考如何优化布线。</p>
+<hr>
+<h4 id="基于对方程式赛车线束布置的一些注意点："><a href="#基于对方程式赛车线束布置的一些注意点：" class="headerlink" title="基于对方程式赛车线束布置的一些注意点："></a>基于对方程式赛车线束布置的一些注意点：</h4><p>1、    电源线要根据走的电流大小用线。（搜UL1007 线径和载流量对应表）<br>2、    信号线用20AWG。<br>3、    颜色上，<strong>供电线必须是红黑色，安全回路必须是黄色，高压线是橙色</strong>，其他颜色随便用。<br>4、    <strong>黄色和橙色是不能乱用的颜色。</strong><br>5、    CAN线的GND一定要在终端接地。<br>6、    CAN线尽量不要绕到大电池和电机控制器那边，会有很强的电磁干扰。<br>7、    主开关面板和主控接插件位置会汇聚很多线，也会有很多需要分线的地方，布置的时候就把分线的位置分布得均匀一点，以防出现线堆积过多。<br>8、    接插件分布要合理，如果一个地方有很多接插件，也会变成一大坨。<br>9、    关于导入模型。建议整车各部分模型分开导入，直接把整车模型导入模型会丢失。<br>10、    关于导入导线。对导线、管脚、连接物等命名尽量使用英文进行命名。导入导线时使用中文命名会出现乱码的现象。<br>11、    布线时不建议自动生成导线。手动布线会更加了解整体的走线情况。</p>
+<blockquote>
+<p>（学习阶段，若有补充，后续更新）</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+        <tag>FSA</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>STM32学习——PWM舵机控制</title>
     <url>/2020/12/02/STM32%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94PWM%E8%88%B5%E6%9C%BA%E6%8E%A7%E5%88%B6/</url>
     <content><![CDATA[<h4 id="STM32控制舵机"><a href="#STM32控制舵机" class="headerlink" title="STM32控制舵机"></a>STM32控制舵机</h4><a id="more"></a>
@@ -152,142 +546,6 @@
       <tags>
         <tag>STM32</tag>
         <tag>学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>eplan_harness_prod_学习笔记</title>
-    <url>/2021/01/26/eplan-harness-prod-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<blockquote>
-<p>本人在学校车队项目负责线束部分，由于网络上较难找到相关资料，因此将学习笔记记录于此。</p>
-</blockquote>
-<a id="more"></a>
-
-<hr>
-<h4 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h4><p>EPLAN Harness prod是一款用于线束建模的软件。软件本身不复杂，但由于并不是广泛使用的软件，网络上学习的资源不多，学习阶段需要花点心思去研究，为新车进行线束建模的时候才会更加得心应手。</p>
-<hr>
-<h4 id="学习资源："><a href="#学习资源：" class="headerlink" title="学习资源："></a>学习资源：</h4><h6 id="网上资源：跟我一起学EPLAN-Harness-prod"><a href="#网上资源：跟我一起学EPLAN-Harness-prod" class="headerlink" title="网上资源：跟我一起学EPLAN Harness prod"></a><strong>网上资源：跟我一起学EPLAN Harness prod</strong></h6><p>点击链接进入话题 <a href="https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MzA3MjAzNTQ3OA==&scene=1&album_id=1446650997702623233&count=3&uin=&key=&devicetype=Windows+10+x64&version=63010043&lang=zh_CN&ascene=1&fontgear=2">#EPLAN教程</a> 查找 “<strong>跟我一起学EPLAN Harness prod</strong>”共七篇文章。文章内容没有完全的介绍软件的各部分功能，主要用于<strong>学习软件的基本操作</strong>以及<strong>初步了解建模步骤</strong>。</p>
-<h6 id="书本：《EPLAN-Harness-prod-官方教程》"><a href="#书本：《EPLAN-Harness-prod-官方教程》" class="headerlink" title="书本：《EPLAN Harness prod 官方教程》"></a><strong>书本：《EPLAN Harness prod 官方教程》</strong></h6><p>对软件的介绍比较齐全，能够查找到软件上各个操作的使用方法。<strong>建模时候遇到问题可翻查此书寻找解决方法</strong>。<br><img src="https://img2.doubanio.com/view/subject/l/public/s33778793.jpg" alt="《EPLAN Harness prod 官方教程》"></p>
-<hr>
-<h4 id="学习过程："><a href="#学习过程：" class="headerlink" title="学习过程："></a>学习过程：</h4><h6 id="1、初步了解软"><a href="#1、初步了解软" class="headerlink" title="1、初步了解软"></a><strong>1、初步了解软</strong></h6><p>从软件自带的样本模型入手，结合教程（软件和教程的模型会不一样），初步了解建模的基本步骤以及基本操作，并尝试建模。</p>
-<h6 id="2、尝试对上赛季模型进行线束建模并构思本赛季线束模型"><a href="#2、尝试对上赛季模型进行线束建模并构思本赛季线束模型" class="headerlink" title="2、尝试对上赛季模型进行线束建模并构思本赛季线束模型"></a><strong>2、尝试对上赛季模型进行线束建模并构思本赛季线束模型</strong></h6><p><strong>阅读赛规</strong>，看懂<strong>整车线束原理图</strong>（<u>重点：安全回路，结合赛规看</u>），<strong>研究上赛季线束模型</strong>，了解并整理<strong>各用电器接口及其位置</strong>。并根据本赛季模型的变化，查找相关线束建模资料（网络，其他优秀车队等），研究并思考如何优化布线。</p>
-<hr>
-<h4 id="基于对方程式赛车线束布置的一些注意点："><a href="#基于对方程式赛车线束布置的一些注意点：" class="headerlink" title="基于对方程式赛车线束布置的一些注意点："></a>基于对方程式赛车线束布置的一些注意点：</h4><p>1、    电源线要根据走的电流大小用线。（搜UL1007 线径和载流量对应表）<br>2、    信号线用20AWG。<br>3、    颜色上，<strong>供电线必须是红黑色，安全回路必须是黄色，高压线是橙色</strong>，其他颜色随便用。<br>4、    <strong>黄色和橙色是不能乱用的颜色。</strong><br>5、    CAN线的GND一定要在终端接地。<br>6、    CAN线尽量不要绕到大电池和电机控制器那边，会有很强的电磁干扰。<br>7、    主开关面板和主控接插件位置会汇聚很多线，也会有很多需要分线的地方，布置的时候就把分线的位置分布得均匀一点，以防出现线堆积过多。<br>8、    接插件分布要合理，如果一个地方有很多接插件，也会变成一大坨。<br>9、    关于导入模型。建议整车各部分模型分开导入，直接把整车模型导入模型会丢失。<br>10、    关于导入导线。对导线、管脚、连接物等命名尽量使用英文进行命名。导入导线时使用中文命名会出现乱码的现象。<br>11、    布线时不建议自动生成导线。手动布线会更加了解整体的走线情况。</p>
-<blockquote>
-<p>（学习阶段，若有补充，后续更新）</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>学习</tag>
-        <tag>FSA</tag>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>初次见面</title>
-    <url>/2020/09/17/%E5%88%9D%E6%AC%A1%E8%A7%81%E9%9D%A2/</url>
-    <content><![CDATA[<p>你好！这里是阿欢同学的博客。<br>这里将分享我的学习笔记和一些生活趣事。<br>请多多指教！</p>
-]]></content>
-      <categories>
-        <category>杂言</category>
-      </categories>
-      <tags>
-        <tag>琐碎的事</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客搭建笔记</title>
-    <url>/2021/01/27/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>为了方便自己以后配置博客 : )</p>
-<a id="more"></a>
-
-<hr>
-<h4 id="教程视频来源"><a href="#教程视频来源" class="headerlink" title="教程视频来源"></a><a href="https://www.bilibili.com/video/BV1nh411o738?p=1">教程视频来源</a></h4><hr>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p><a href="https://nodejs.org/en/">Nodejs</a><br><a href="https://gitforwindows.org/">Git Bash</a><br>打开 <strong>Git Bash</strong> 输入 <strong>node -v</strong> 和 <strong>npm -v</strong> 检验是否安装成功。</p>
-<h4 id="启动CMD，输入以下指令"><a href="#启动CMD，输入以下指令" class="headerlink" title="启动CMD，输入以下指令"></a>启动CMD，输入以下指令</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> prefix “C:\博客搭建\Global”</span><br><span class="line">npm config <span class="built_in">set</span> cacha “C:\博客搭建\Global”</span><br></pre></td></tr></table></figure>
-<p><strong>记住路径，配置变量的时候会用到</strong></p>
-<h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><p>打开 <strong>Git Bash</strong> 输入</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
-<p>如果Hexo无法使用，需要配置环境变量</p>
-<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><p>右击“此电脑”——“属性”——“高级系统设置”——“环境变量”——pc的用户变量——选中path——“编辑”——“新建”——输入“C:\博客搭建\Global”——“确定”<br><img src="https://s3.ax1x.com/2021/01/27/sxSLGR.png" alt="配置路径图一"><br><img src="https://s3.ax1x.com/2021/01/27/sxpkRI.png" alt="配置路径图二"></p>
-<p>在<strong>Git Bash</strong> 输入 <strong>hexo -v</strong> 验证</p>
-<hr>
-<h2 id="配置博客"><a href="#配置博客" class="headerlink" title="配置博客"></a>配置博客</h2><h4 id="初始化博客"><a href="#初始化博客" class="headerlink" title="初始化博客"></a>初始化博客</h4><p>“C:\博客搭建”创建文件夹，命名为“Blog”<br>进入“Blog”——搜索栏输入cmd<br>进入cmd<br>输入 hexo init<br>输入 hexo s<br><img src="https://s3.ax1x.com/2021/01/27/sxp2wD.png" alt="初始化博客"><br>浏览器输入地址：<u><a href="http://localhost:4000/">http://localhost:4000</a></u><br>初始化博客成功</p>
-<h4 id="配置博客-1"><a href="#配置博客-1" class="headerlink" title="配置博客"></a>配置博客</h4><p>打开Blog文件夹——用 Sublime Text 打开“_config.yml”<br><img src="https://s3.ax1x.com/2021/01/27/sxCcIe.png" alt="配置博客1"></p>
-<p>修改信息 </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">title:                                    <span class="comment">#博客名字</span></span><br><span class="line">subtitle: <span class="string">&#x27;good things take time :)&#x27;</span>      <span class="comment">#博客副标题</span></span><br><span class="line">description: <span class="string">&#x27;&#x27;</span>                           <span class="comment">#关于博客的描述</span></span><br><span class="line">keywords:</span><br><span class="line">author: Ren                               <span class="comment">#博客作者</span></span><br><span class="line">language: zh_CN                           <span class="comment">#博客语言</span></span><br><span class="line">timezone: <span class="string">&#x27;Asia/Shanghai&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h6 id="Hexo基本命令"><a href="#Hexo基本命令" class="headerlink" title="Hexo基本命令"></a>Hexo基本命令</h6><table>
-<thead>
-<tr>
-<th align="center">命令</th>
-<th align="center">含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Hexo init</td>
-<td align="center">初始化博客</td>
-</tr>
-<tr>
-<td align="center">Hexo s</td>
-<td align="center">运行博客</td>
-</tr>
-<tr>
-<td align="center">Hexo n title</td>
-<td align="center">创建一篇新的文章，文章标题是title</td>
-</tr>
-<tr>
-<td align="center">Hexo c</td>
-<td align="center">清理文件</td>
-</tr>
-<tr>
-<td align="center">Hexo g</td>
-<td align="center">生成静态文件</td>
-</tr>
-<tr>
-<td align="center">Hexo d</td>
-<td align="center">部署博客（需要插件）</td>
-</tr>
-</tbody></table>
-<h4 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h4><p>CMD输入 <strong>Hexo n title</strong> 创建一篇新的文章，文章标题是title<br><img src="https://s3.ax1x.com/2021/01/27/sxP9dU.png" alt="写文章"><br>打开文件进行编辑<br>文章的编辑方式使用<a href="https://www.runoob.com/markdown/md-block.html"><strong>markdown</strong></a><br>文章保存后在 <strong>cmd</strong> 输入 <strong>hexo s</strong><br>打开连接可以看到新文章</p>
-<h4 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h4><p><a href="https://hexo.io/themes/">themes|hexo</a><br>一般会有安装教程文章，详细阅读<br>在Blog文件——“_config.yml”里，找到theme，修改为已下载的主题的名字<br><img src="https://s3.ax1x.com/2021/01/27/sxPGQI.png" alt="配置主题"></p>
-<p><strong>此处需要安装插件使博客能够运行。</strong><br>Cmd运行命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-pug hexo-renderer-stylus</span><br></pre></td></tr></table></figure>
-<p>安装插件。</p>
-<blockquote>
-<p>为方便以后升级方便，不建议对主题文件进行修改。推荐把主题的配置文件“_config.yml”复制到hexo工作目录下的source/_data/ayer.yml，如果目录不存在就创建一个。</p>
-</blockquote>
-<h4 id="更换图片"><a href="#更换图片" class="headerlink" title="更换图片"></a>更换图片</h4><p>使用网站 <strong><a href="https://imgchr.com/">路过图床</a></strong> 上传图片<br>使用图片UPL链接<br><img src="https://s3.ax1x.com/2021/01/27/sxFaGQ.png" alt="路过图床"> </p>
-<h4 id="创建分类页、标签页、友链页"><a href="#创建分类页、标签页、友链页" class="headerlink" title="创建分类页、标签页、友链页"></a>创建分类页、标签页、友链页</h4><p>e.g.<br>分类页<br>前往hexo根目录<br>输入 </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
-<p>修改文件为：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Title: 我的分类页</span><br><span class="line">Data: *******</span><br><span class="line">Type: <span class="string">&quot;catergories&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="友链添加"><a href="#友链添加" class="headerlink" title="友链添加"></a>友链添加</h4><p>在hexo博客目录中的source/_data，创建文件link.ylm<br>编辑</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Class_name:</span><br><span class="line">Class_desc:</span><br><span class="line">Link_list:</span><br><span class="line">	Name:				<span class="comment">#名字</span></span><br><span class="line">	Link:				<span class="comment">#网址</span></span><br><span class="line">	Avatar:				<span class="comment">#头像</span></span><br><span class="line">	Descry:				<span class="comment">#描述</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="关于文章置顶"><a href="#关于文章置顶" class="headerlink" title="关于文章置顶"></a>关于文章置顶</h4><p><strong>安装插件</strong><br>执行命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-generator-index --save</span><br><span class="line">npm install hexo-generator-index-pin-top –-save</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="部署云端"><a href="#部署云端" class="headerlink" title="部署云端"></a>部署云端</h2><p>执行命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git –save</span><br></pre></td></tr></table></figure>
-<p>使用<strong>github</strong>部署云端<br>在GitHub中建立一个仓库，仓库名字必须是 <strong>xxx.github.io</strong> , xxx是GitHub名字<br>然后打开博客配置文件_config.yml<br>找到</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Deploy:</span><br><span class="line">	Type: git</span><br><span class="line">	Repo:&lt;仓库地址&gt;</span><br><span class="line">	Branch: master </span><br></pre></td></tr></table></figure>
-<p>cmd运行命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Hexo clean </span><br><span class="line">hexo g</span><br><span class="line">Hexo d</span><br></pre></td></tr></table></figure>
-<p>如果报错<br>根据提示运行命令</p>
-<blockquote>
-<p>创建博客完成</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
       </tags>
   </entry>
 </search>
